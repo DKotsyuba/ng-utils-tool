@@ -1,0 +1,26 @@
+@import "~src/mixins";
+
+:host {
+  .table-container {
+    overflow: auto;
+    height: calc(100vh - 70px);
+  }
+
+  .subs-container {
+    display: flex;
+    gap: 14px;
+
+    td {
+      transition: color .3s, background .3s !important;
+    }
+
+    &::ng-deep {
+      .ant-table-body {
+        @include scrollbar();
+        overflow-y: auto !important;
+        max-height: calc(100vh - 130px);
+        min-height: calc(100vh - 120px);
+      }
+    }
+  }
+}

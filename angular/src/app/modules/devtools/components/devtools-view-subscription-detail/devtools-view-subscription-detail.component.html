@@ -1,0 +1,42 @@
+<div>
+  <nz-page-header
+    class="header"
+    nzBackIcon=""
+    nzTitle="Detail"
+    (nzBack)="back.emit()"
+  ></nz-page-header>
+  <div class="detail-list scrollbar-style">
+    <nz-list>
+      <nz-list-item *ngFor="let item of data; trackBy: trackBy" [@enter]>
+        <div class="detail-info">
+          <div class="detail-info-item">
+            <span>name:</span>
+            <span>{{item.errorText}}</span>
+          </div>
+          <div class="detail-info-item">
+            <span>is complete:</span>
+            <span>{{item.isComplete}}</span>
+          </div>
+          <div class="detail-info-item">
+            <span>timestamp:</span>
+            <span>{{item.timestamp | date: 'medium'}}</span>
+          </div>
+          <div class="detail-info-item">
+            <span>last next value:</span>
+            <span>{{item.next ?? 'N/A'}}</span>
+          </div>
+          <div class="detail-info-item">
+            <span>error value:</span>
+            <span>{{item.error ?? 'N/A'}}</span>
+          </div>
+          <div class="detail-info-item detail-info-item-callstack">
+            <span>call stack:</span>
+            <app-devtools-callstack-view
+              [callStack]="item.callStack"
+            ></app-devtools-callstack-view>
+          </div>
+        </div>
+      </nz-list-item>
+    </nz-list>
+  </div>
+</div>

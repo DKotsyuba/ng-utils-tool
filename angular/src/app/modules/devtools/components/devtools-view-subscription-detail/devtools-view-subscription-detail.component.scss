@@ -1,0 +1,36 @@
+:host {
+  min-width: 45vw;
+  display: block;
+
+  .header {
+    display: flex;
+    padding: 7px;
+  }
+
+  .detail-list {
+    position: relative;
+    overflow: auto;
+    height: calc(100vh - 119px);
+  }
+
+  .detail-info {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 7px;
+  }
+
+  .detail-info-item {
+    display: flex;
+    gap: 7px;
+
+    & span:first-child {
+      color: var(--text-2);
+    }
+  }
+
+  .detail-info-item-callstack {
+    grid-row: span 5;
+  }
+}

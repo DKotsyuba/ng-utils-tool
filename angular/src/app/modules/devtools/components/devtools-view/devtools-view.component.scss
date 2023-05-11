@@ -1,0 +1,10 @@
+:host {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+
+  .header {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}

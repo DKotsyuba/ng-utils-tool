@@ -1,0 +1,46 @@
+<div class="subs-container">
+  <nz-table
+    [nzShowPagination]="false"
+    [nzData]="tableData"
+    [nzPageSize]="50"
+    [nzWidthConfig]="nzWidthConfig"
+    [nzScroll]="{ y: 'calc(100vh - 130px)' }">
+    <thead>
+    <tr>
+      <th nzWidth="50px"></th>
+      <th>name</th>
+      <th>active</th>
+      <th>total</th>
+      <th>complexity</th>
+      <th>min alloc mem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let data of tableData; trackBy: trackBy">
+      <tr>
+        <td [nzExpand]="expandSet.has(data[0])" (nzExpandChange)="onExpandChange(data[0], $event)"></td>
+        <td>{{ data[0] }}</td>
+        <td>{{ (data[1] | sum: 'activeSubscriptions') | backlight }}</td>
+        <td>{{ (data[1] | sum: 'totalSubscriptions') | backlight }}</td>
+        <td></td>
+        <td>{{((data[1] | sum: 'activeSubscriptions') * (data[1] | sum: 'complexity') * 8) | backlight}}</td>
+      </tr>
+      <ng-container *ngIf="expandSet.has(data[0])">
+        <tr *ngFor="let item of data[1]; trackBy: trackByCallData" (click)="onShowDetails(item)">
+          <td></td>
+          <td>{{item.errorText}}</td>
+          <td>{{item.activeSubscriptions | backlight}}</td>
+          <td>{{item.totalSubscriptions | backlight}}</td>
+          <td>{{item.complexity}}</td>
+          <td>{{(item.complexity * item.activeSubscriptions * 8) | backlight}}</td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </nz-table>
+  <app-devtools-view-subscription-detail
+    *ngIf="detailData"
+    (back)="onCloseDetails()"
+    [data]="detailData">
+  </app-devtools-view-subscription-detail>
+</div>

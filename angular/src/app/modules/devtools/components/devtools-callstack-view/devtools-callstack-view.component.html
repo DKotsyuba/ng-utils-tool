@@ -1,0 +1,6 @@
+<div class="callstack">
+  <div class="callstack-item" *ngFor="let item of callStack$ | async" (click)="onClick($any(item))">
+    <span>{{item[0]}}</span>
+    <span>{{item[1]}}</span>
+  </div>
+</div>

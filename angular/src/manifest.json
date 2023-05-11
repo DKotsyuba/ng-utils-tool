@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "ng-utils-tool",
+  "short_name": "ng-utils-tool",
+  "version": "1.0.0",
+  "version_name": "",
+  "description": "Generated with @larscom/ng-chrome-extension",
+  "permissions": [
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html?#/devtools/popup",
+    "default_title": "Angular Chrome Extension"
+  },
+  "devtools_page": "index.html?#/devtools",
+  "options_page": "index.html?#/devtools/options",
+  "content_scripts": [
+    {
+      "js": [
+        "contentPage.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "serviceWorker.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [ "inpage.js" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; style-src * 'unsafe-inline'"
+  }
+}

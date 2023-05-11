@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "mixins";
+
+:root {
+  --bg-1: #242424;
+  --bg-2: #1e1e1e;
+  --text-1: #ffffff;
+  --text-2: rgba(255, 255, 255, 0.45);
+  --text-3: #177ddc;
+  --color-1: #303030;
+}
+
+.backlight-up {
+  color: #ff0000;
+  @include postfix("↑")
+}
+
+.backlight-down {
+  color: #4cc200;
+  @include postfix("↓")
+}
+
+.scrollbar-style {
+  @include scrollbar()
+}

@@ -1,0 +1,13 @@
+:host {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-1);
+  color: var(--text-1);
+
+  .content {
+    position: relative;
+  }
+}

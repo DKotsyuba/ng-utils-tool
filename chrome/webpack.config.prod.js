@@ -1,29 +1,8 @@
-const { CheckerPlugin } = require('awesome-typescript-loader');
-const { join } = require('path');
 const { optimize } = require('webpack');
+const merge = require('webpack-merge');
+const base  = require('./webpack.config.base');
 
-module.exports = {
-  mode: 'production',
-  entry: {
-    contentPage: join(__dirname, 'src/contentPage.ts'),
-    serviceWorker: join(__dirname, 'src/serviceWorker.ts'),
-    inpage: join(__dirname, 'src/inpage.ts')
-  },
-  module: {
-    rules: [
-      {
-        test: /\.ts?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  output: {
-    path: join(__dirname, '../angular/dist'),
-    filename: '[name].js'
-  },
-  plugins: [new CheckerPlugin(), new optimize.AggressiveMergingPlugin()],
-  resolve: {
-    extensions: ['.ts', '.js']
-  }
-};
+module.exports = merge(base, {
+    mode: 'production',
+    plugins: [new optimize.AggressiveMergingPlugin()],
+});

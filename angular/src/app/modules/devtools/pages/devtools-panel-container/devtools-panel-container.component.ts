@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {DataService} from "../../../../services/data.service";
+import {SourceMapLoaderService} from "../../../../services/source-map-loader.service";
 
 @Component({
   selector: 'app-devtools-panel-container',
@@ -7,7 +8,8 @@ import {DataService} from "../../../../services/data.service";
   styleUrls: ['./devtools-panel-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    DataService
+    DataService,
+    SourceMapLoaderService
   ]
 })
 export class DevtoolsPanelContainerComponent {

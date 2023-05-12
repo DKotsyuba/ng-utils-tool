@@ -27,9 +27,8 @@ export class DevtoolsCallstackViewComponent {
   constructor(private sourceMap: SourceMapLoaderService) {
     this.callStack$.pipe(
       map(data => this.buildSourceMapData(data)),
-      // switchMap(data => combineLatest(data.map(d => this.sourceMap.getPosition(d.url.href, d.line))).pipe(
-      //   tap(s => { debugger })
-      // ))
+      switchMap(data => combineLatest(data.map(d => this.sourceMap.getPosition(d.url.href, d.line))).pipe(
+      ))
     ).subscribe()
   }
 

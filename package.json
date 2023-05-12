@@ -1,22 +1,25 @@
 {
   "name": "ng-utils-tool",
-  "version": "1.0.0",
-  "description": "Generated with @larscom/ng-chrome-extension",
+  "version": "0.0.1",
+  "description": "ng-utils chrome dev extension",
   "scripts": {
     "ng": "ng",
     "start": "npm run watch",
+    "patch-package": "patch-package",
+    "postinstall": "patch-package",
     "build:angular": "ng build --configuration development",
     "build:angular-production": "ng build --configuration production",
     "watch:angular": "ng build --watch --configuration development --delete-output-path false --source-map=true --plugin ~angular/sourcemaps-plugin.js",
     "build:chrome": "webpack --config chrome/webpack.config.js",
     "build:chrome-production": "webpack --config chrome/webpack.config.prod.js",
     "watch:chrome": "webpack --config chrome/webpack.config.js -w",
-    "build": "npm run clean && npm run build:angular && npm run build:chrome && npm run update-version",
-    "build:production": "npm run build:angular-production && npm run build:chrome-production && npm run pack",
+    "build": "npm run clean && npm run build:angular && npm run build:chrome && npm run update-version && npm run move-source-map-mapper",
+    "build:production": "npm run build:angular-production && npm run build:chrome-production && npm run move-source-map-mapper && npm run pack",
     "watch": "npm run clean && npm-run-all --parallel watch:*",
     "clean": "rimraf angular/dist",
     "pack": "cd angular/dist && bestzip ../../extension-build.zip *",
-    "update-version": "node chrome/update-version.js"
+    "update-version": "node chrome/update-version.js",
+    "move-source-map-mapper": "cp node_modules/source-map/lib/mappings.wasm angular/dist/assets/mappings.wasm"
   },
   "private": true,
   "dependencies": {
@@ -51,10 +54,13 @@
     "awesome-typescript-loader": "^5.2.1",
     "bestzip": "^2.1.7",
     "npm-run-all": "^4.1.5",
+    "patch-package": "^7.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "rimraf": "^2.7.1",
     "ts-loader": "^9.2.6",
     "ts-node": "~10.3.0",
     "typescript": "~4.7.3",
-    "webpack-cli": "^4.9.0"
+    "webpack-cli": "^4.9.0",
+    "webpack-merge": "^5.8.0"
   }
 }

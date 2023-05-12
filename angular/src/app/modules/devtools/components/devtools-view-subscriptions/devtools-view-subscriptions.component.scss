@@ -1,9 +1,17 @@
 @import "~src/mixins";
 
 :host {
-  .table-container {
-    overflow: auto;
-    height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  .controls {
+    display: flex;
+    gap: 7px;
+  }
+
+  .subs-show-detail {
+    cursor: pointer;
   }
 
   .subs-container {
@@ -18,8 +26,7 @@
       .ant-table-body {
         @include scrollbar();
         overflow-y: auto !important;
-        max-height: calc(100vh - 130px);
-        min-height: calc(100vh - 120px);
+        min-height: calc(100vh - 155px);
       }
     }
   }

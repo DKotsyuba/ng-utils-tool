@@ -1,18 +1,22 @@
+<div class="controls">
+  <label nz-checkbox [nzValue]="onlyActive" (nzCheckedChange)="onChangeOnlyActive($event)">Only active</label>
+  <label nz-checkbox [nzValue]="moreOneAction" (nzCheckedChange)="onChangeMoreOneActive($event)">More one active</label>
+</div>
 <div class="subs-container">
   <nz-table
     [nzShowPagination]="false"
     [nzData]="tableData"
     [nzPageSize]="50"
     [nzWidthConfig]="nzWidthConfig"
-    [nzScroll]="{ y: 'calc(100vh - 130px)' }">
+    [nzScroll]="{ y: 'calc(100vh - 160px)' }">
     <thead>
     <tr>
       <th nzWidth="50px"></th>
-      <th>name</th>
-      <th>active</th>
-      <th>total</th>
+      <th>name (total)</th>
+      <th>active subscriptions ({{(tableData | sumTotal: 'activeSubscriptions') | backlight}})</th>
+      <th>total subscriptions ({{(tableData | sumTotal: 'totalSubscriptions') | backlight}})</th>
       <th>complexity</th>
-      <th>min alloc mem</th>
+      <th>min alloc mem, bit ({{((tableData | sumTotal: 'activeSubscriptions') * (tableData | sumTotal: 'complexity') * 8) | backlight}})</th>
     </tr>
     </thead>
     <tbody>
@@ -27,7 +31,7 @@
       </tr>
       <ng-container *ngIf="expandSet.has(data[0])">
         <tr *ngFor="let item of data[1]; trackBy: trackByCallData" (click)="onShowDetails(item)">
-          <td></td>
+          <td (click)="onShowDetails(item)" class="subs-show-detail">→</td>
           <td>{{item.errorText}}</td>
           <td>{{item.activeSubscriptions | backlight}}</td>
           <td>{{item.totalSubscriptions | backlight}}</td>

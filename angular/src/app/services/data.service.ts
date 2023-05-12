@@ -3,10 +3,13 @@ import {Action, initTool} from "../../../../shared/actions";
 import {TAB_ID} from "../providers/tab-id.provider";
 import {DATA_HANDLERS} from "../providers/data-handlers";
 import {DataHandler} from "../models/data-handler";
-import {deserialize} from "../../../../shared/data";
+import {deserialize, serialize} from "../../../../shared/data";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class DataService {
+
+  private port: chrome.runtime.Port;
 
   private isScheduleTik = false;
   constructor(private appRef: ApplicationRef,
@@ -18,14 +21,29 @@ export class DataService {
     this.connect()
   }
 
+  send<I, R>(action: Action<I>): Observable<Action<R>> {
+    return new Observable<Action<R>>(subscriber => {
+      const handler = (respAction: Action<R>) => {
+        if (respAction.type === action.type && respAction.id === action.id) {
+          const deserializeAction = deserialize(respAction)
+          subscriber.next(deserializeAction)
+          subscriber.complete()
+          this.port.onMessage.removeListener(handler)
+        }
+      }
+      this.port.onMessage.addListener(handler)
+      this.port.postMessage(serialize(action))
+    });
+  }
+
   protected connect() {
-    const bg = chrome.runtime.connect(chrome.runtime.id, { name: 'tool' })
-    bg.onMessage.addListener(action => {
+    this.port = chrome.runtime.connect(chrome.runtime.id, { name: 'tool' })
+    this.port.onMessage.addListener(action => {
       const deserializeAction = deserialize(action)
       this.next(deserializeAction)
       this.tick()
     })
-    bg.postMessage(initTool(this.tabId))
+    this.port.postMessage(initTool(this.tabId))
   }
 
   private next(action: Action<any>): void {

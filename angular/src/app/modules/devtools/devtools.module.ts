@@ -16,6 +16,8 @@ import { DevtoolsViewSubscriptionDetailComponent } from './components/devtools-v
 import {NzPageHeaderModule} from "ng-zorro-antd/page-header";
 import {NzIconModule} from "ng-zorro-antd/icon";
 import { DevtoolsCallstackViewComponent } from './components/devtools-callstack-view/devtools-callstack-view.component';
+import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
+import { SumTotalPipe } from './pipes/sum-total.pipe';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { DevtoolsCallstackViewComponent } from './components/devtools-callstack-
     SumPipe,
     DevtoolsViewSubscriptionDetailComponent,
     DevtoolsCallstackViewComponent,
+    SumTotalPipe,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,7 @@ import { DevtoolsCallstackViewComponent } from './components/devtools-callstack-
     NzTableModule,
     NzPageHeaderModule,
     NzIconModule,
+    NzCheckboxModule,
   ]
 })
 export class DevtoolsModule { }

@@ -1,4 +1,6 @@
 import {Action, initTool} from "../../shared/actions";
+import {handle} from "./backgroundHandlers";
+import {deserialize, serialize} from "../../shared/data";
 
 const portsToolMap: Map<number, chrome.runtime.Port> = new Map()
 const actionsMap: Map<number, Action<any>[]> = new Map()
@@ -8,7 +10,9 @@ function handleMessageFromLib(tabId: number, action: Action<any>) {
         port.postMessage(action)
         return
     }
-    actionsMap.get(tabId).push(action)
+    const actions =  actionsMap.get(tabId) ?? []
+    actions.push(action)
+    actionsMap.set(tabId, actions)
 }
 
 function sendAll(tabId: number) {
@@ -28,15 +32,21 @@ function handleConnect(port: chrome.runtime.Port) {
         port.onDisconnect.addListener(() => actionsMap.delete(tabId))
     }
     if (port.name === 'tool') {
-        port.onMessage.addListener(action => {
-            if (action.type === initTool.type) {
-                const tabId = action.payload
-                portsToolMap.set(tabId, port)
-                sendAll(tabId)
-                port.onDisconnect.addListener(() => portsToolMap.delete(tabId))
-            }
-        })
+        port.onMessage.addListener(action => handleToolPostMessage(port, action))
     }
+}
+
+async function handleToolPostMessage(port: chrome.runtime.Port, action: Action<any>) {
+    if (action.type === initTool.type) {
+        const tabId = action.payload
+        portsToolMap.set(tabId, port)
+        sendAll(tabId)
+        port.onDisconnect.addListener(() => portsToolMap.delete(tabId))
+    } else {
+        const respAction = await handle(deserialize(action))
+        port.postMessage(serialize(respAction))
+    }
+
 }
 
 chrome.runtime.onConnect.addListener(handleConnect)

@@ -32,6 +32,8 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@sentry/angular-ivy": "^7.51.2",
+    "@sentry/browser": "^7.51.2",
     "browserify-fs": "^1.0.0",
     "ng-zorro-antd": "14.0.0",
     "ngx-build-plus": "^14.0.0-beta.0",

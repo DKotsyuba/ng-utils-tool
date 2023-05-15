@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "ng-utils-tool",
-  "short_name": "ng-utils-tool",
-  "version": "1.0.0",
+  "name": "inch-dev-tools",
+  "short_name": "inch-dev-tools",
+  "version": "0.0.1",
   "version_name": "",
-  "description": "Generated with @larscom/ng-chrome-extension",
+  "description": "inch-dev-tools chrome dev extension",
+  "icons": {
+    "16": "assets/icons/icon-16x16.png",
+    "48": "assets/icons/icon-48x48.png",
+    "128": "assets/icons/icon-128x128.png"
+  },
   "permissions": [
     "tabs"
   ],
@@ -37,5 +42,6 @@
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; style-src * 'unsafe-inline'"
-  }
+  },
+  "update_url": "https://inch-dev-tools.web.app/update.xml"
 }

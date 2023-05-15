@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadDisplayName</key>
+        <string>inch-dev-tools Installation</string>
+        <key>PayloadRemovalDisallowed</key>
+        <false/>
+        <key>PayloadScope</key>
+        <string>User</string>
+        <key>PayloadType</key>
+        <string>Configuration</string>
+
+        <key>PayloadIdentifier</key>
+        <string>inch-dev-tools-000</string>
+
+        <key>PayloadUUID</key>
+        <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct</string>
+
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadContent</key>
+        <array>
+
+            <dict>
+                <key>PayloadType</key>
+                <string>com.apple.ManagedClient.preferences</string>
+                <key>PayloadDisplayName</key>
+                <string>This Installation Policy enable your Chrome browser to install the inch-dev-tools extension hosted on Plasmo Itero</string>
+
+                <key>PayloadIdentifier</key>
+                <string>com.plasmo.itero.6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.google.Chrome</string>
+
+                <key>PayloadUUID</key>
+                <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.google.Chrome</string>
+
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+
+                <key>PayloadContent</key>
+                <dict>
+                    <key>com.google.Chrome</key>
+                    <dict>
+                        <key>Forced</key>
+                        <array>
+                            <dict>
+                                <key>mcx_preference_settings</key>
+                                <dict>
+                                    <key>ExtensionInstallAllowlist</key>
+                                    <array>
+                                        <string><%= appId %></string>
+                                    </array>
+                                    <key>ExtensionInstallSources</key>
+                                    <array>
+                                        <string><%= updateUrl %></string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
+
+            <dict>
+                <key>PayloadType</key>
+                <string>com.apple.ManagedClient.preferences</string>
+                <key>PayloadDisplayName</key>
+                <string>This Installation Policy enable your Edge browser to install the inch-dev-tools extension hosted on Plasmo Itero</string>
+
+                <key>PayloadIdentifier</key>
+                <string>com.plasmo.itero.6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.microsoft.Edge</string>
+
+                <key>PayloadUUID</key>
+                <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.microsoft.Edge</string>
+
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+
+                <key>PayloadContent</key>
+                <dict>
+                    <key>com.microsoft.Edge</key>
+                    <dict>
+                        <key>Forced</key>
+                        <array>
+                            <dict>
+                                <key>mcx_preference_settings</key>
+                                <dict>
+                                    <key>ExtensionInstallAllowlist</key>
+                                    <array>
+                                        <string><%= appId %></string>
+                                    </array>
+                                    <key>ExtensionInstallSources</key>
+                                    <array>
+                                        <string><%= updateUrl %></string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
+
+            <dict>
+                <key>PayloadType</key>
+                <string>com.apple.ManagedClient.preferences</string>
+                <key>PayloadDisplayName</key>
+                <string>This Installation Policy enable your Brave browser to install the inch-dev-tools extension hosted on Plasmo Itero</string>
+
+                <key>PayloadIdentifier</key>
+                <string>com.plasmo.itero.6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.brave.Browser</string>
+
+                <key>PayloadUUID</key>
+                <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.brave.Browser</string>
+
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+
+                <key>PayloadContent</key>
+                <dict>
+                    <key>com.brave.Browser</key>
+                    <dict>
+                        <key>Forced</key>
+                        <array>
+                            <dict>
+                                <key>mcx_preference_settings</key>
+                                <dict>
+                                    <key>ExtensionInstallAllowlist</key>
+                                    <array>
+                                        <string><%= appId %></string>
+                                    </array>
+                                    <key>ExtensionInstallSources</key>
+                                    <array>
+                                        <string><%= updateUrl %></string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
+
+            <dict>
+                <key>PayloadType</key>
+                <string>com.apple.ManagedClient.preferences</string>
+                <key>PayloadDisplayName</key>
+                <string>This Installation Policy enable your Arc browser to install the inch-dev-tools extension hosted on Plasmo Itero</string>
+
+                <key>PayloadIdentifier</key>
+                <string>com.plasmo.itero.6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-company.thebrowser.Browser</string>
+
+                <key>PayloadUUID</key>
+                <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-company.thebrowser.Browser</string>
+
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+
+                <key>PayloadContent</key>
+                <dict>
+                    <key>company.thebrowser.Browser</key>
+                    <dict>
+                        <key>Forced</key>
+                        <array>
+                            <dict>
+                                <key>mcx_preference_settings</key>
+                                <dict>
+                                    <key>ExtensionInstallAllowlist</key>
+                                    <array>
+                                        <string><%= appId %></string>
+                                    </array>
+                                    <key>ExtensionInstallSources</key>
+                                    <array>
+                                        <string><%= updateUrl %></string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
+
+            <dict>
+                <key>PayloadType</key>
+                <string>com.apple.ManagedClient.preferences</string>
+                <key>PayloadDisplayName</key>
+                <string>This Installation Policy enable your Vivaldi browser to install the inch-dev-tools extension hosted on Plasmo Itero</string>
+
+                <key>PayloadIdentifier</key>
+                <string>com.plasmo.itero.6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.vivaldi.Vivaldi</string>
+
+                <key>PayloadUUID</key>
+                <string>6PPlp8BEbjErEoY2lFmKMrjYkVyfDtct-com.vivaldi.Vivaldi</string>
+
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+
+                <key>PayloadContent</key>
+                <dict>
+                    <key>com.vivaldi.Vivaldi</key>
+                    <dict>
+                        <key>Forced</key>
+                        <array>
+                            <dict>
+                                <key>mcx_preference_settings</key>
+                                <dict>
+                                    <key>ExtensionInstallAllowlist</key>
+                                    <array>
+                                        <string><%= appId %></string>
+                                    </array>
+                                    <key>ExtensionInstallSources</key>
+                                    <array>
+                                        <string><%= updateUrl %></string>
+                                    </array>
+                                </dict>
+                            </dict>
+                        </array>
+                    </dict>
+                </dict>
+            </dict>
+
+        </array>
+    </dict>
+</plist>

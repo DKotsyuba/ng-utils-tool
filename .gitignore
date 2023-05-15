@@ -90,3 +90,8 @@ node_modules/
 
 # Yarn Integrity file
 .yarn-integrity
+
+extension.zip
+extension.crx
+policy.mobileconfig
+update.xml

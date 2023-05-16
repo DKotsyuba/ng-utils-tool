@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "inch-dev-tools",
   "short_name": "inch-dev-tools",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "version_name": "",
   "description": "inch-dev-tools chrome dev extension",
   "icons": {
